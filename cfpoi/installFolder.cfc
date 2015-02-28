@@ -64,8 +64,7 @@
 		
 		<cfreturn result />
 	
-	</cffunction>
-	
+	</cffunction>	
 	
 	<cffunction name="uninstall" returntype="struct" output="no" hint="called by Lucee to uninstall the application">
 		<cfargument name="path" type="any"/>
@@ -80,6 +79,7 @@
 			processResult.status = deleteAsset("directory", "#serverPath#/components/org/cfpoi");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-3.7-20101029.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-3.7-20101029.jar");
+			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-export-utility.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-schemas-3.7-20101029.jar");
 /*
 			Files appear to be already loaded by Lucee, this will likely change
@@ -90,7 +90,7 @@
 			processResult.status = deleteAsset("file", "#serverPath#/library/tag/spreadsheet.cfc");
 		</cfscript>
 		
-		<cfdirectory action="list" directory="#serverPath#/library/function" filter="Spreadsheet*" name="ssDir">
+		<cfdirectory action="list" directory="#serverPath#/library/function" filter="*Spreadsheet*" name="ssDir">
 		
 		<cfloop query="ssDir">
 			<cfset processResult.status = deleteAsset("file", "#ssDir.directory#/#ssDir.name#") />

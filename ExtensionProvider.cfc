@@ -7,9 +7,9 @@ component displayname="extension provider" output="false" {
 
 	remote struct function getInfo(){
 		var info = {
-			title="cfspreadsheet-lucee",
+			title="Leftbower",
 			description="A spreadsheet extension for Lucee",
-			image="#instance.thisAddress#/img/leftbower.png",
+			image="#instance.thisAddress#leftbower.png",
 			url="https://github.com/Leftbower/cfspreadsheet-lucee",
 			mode="develop"
 		};
@@ -21,13 +21,13 @@ component displayname="extension provider" output="false" {
 		var rootURL=getInfo().url;
 		var desc = "cfspreadsheet";
 		QueryAddRow(apps);
-		QuerySetCell(apps,'id','10EEC23A-0779-4068-9507A9C5ED4A8641');
+		QuerySetCell(apps,'id','C092CE1F-C769-4E92-8A7AB609204D8F71');
 		QuerySetCell(apps,'name','cfspreadsheet');
 		QuerySetCell(apps,'type','all');
 		QuerySetCell(apps,'label','&lt;cfspreadsheet /&gt;');
 		QuerySetCell(apps,'description',desc);
-		QuerySetCell(apps,'author','Ext by Andrew Kretzer.<br/>CFPOI by Matt Woodward');
-		QuerySetCell(apps,'image','#instance.thisAddress#/img/Apps-Spreadsheet-App-icon.png');
+		QuerySetCell(apps,'author','Extension by Andrew Kretzer (forked from Andy Jarrett)<br/>CFPOI by Matt Woodward');
+		QuerySetCell(apps,'image','#instance.thisAddress#Apps-Spreadsheet-App-icon.png');
 		QuerySetCell(apps,'support','https://github.com/Leftbower/cfspreadsheet-lucee/issues');
 		QuerySetCell(apps,'documentation','https://github.com/Leftbower/cfspreadsheet-lucee/wiki');
 		QuerySetCell(apps,'created',CreateDate(2015,2,27));
@@ -39,4 +39,3 @@ component displayname="extension provider" output="false" {
 		return apps;
 	}
 }
-

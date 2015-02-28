@@ -20,7 +20,7 @@
 		<zip destfile="${project-name}/cfpoi.zip" basedir="${project-name}/${cfpoiComponent}" excludes=".DS_Store" />
 		<zip destfile="${project-name}/tags.zip" basedir="${project-name}/${tags}" excludes=".DS_Store" />
 		<zip destfile="${project-name}/functions.zip" basedir="${project-name}/${functions}" excludes=".DS_Store" />
-		<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store" />
+		<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store,**/ooxml-lib/***" />
 		
 		<echo message="Putting the project zips into a master zip file"/>
 		<zip destfile="${project-name}.zip">
