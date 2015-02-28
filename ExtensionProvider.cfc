@@ -1,10 +1,10 @@
 component displayname="extension provider" output="false" {
-	
+
 	instance = {
 		thisAddress = "http://#cgi.SERVER_NAME#:#cgi.SERVER_PORT#/luceeExtensionProvider/"
 	};
-	
-	
+
+
 	remote struct function getInfo(){
 		var info = {
 			title="cfspreadsheet-lucee",
@@ -15,7 +15,7 @@ component displayname="extension provider" output="false" {
 		};
 		return info;
 	}
-	
+
 	remote query function listApplications(){
 		var apps = queryNew('type,id,name,label,description,version,category,image,download,author,codename,video,support,documentation,forum,mailinglist,network,created');
 		var rootURL=getInfo().url;
@@ -35,8 +35,8 @@ component displayname="extension provider" output="false" {
 		QuerySetCell(apps,'category',"Application");
 		QuerySetCell(apps,'download','#instance.thisAddress#/cfpoi.zip');
 		//QuerySetCell(apps,'download','https://github.com/Leftbower/cfspreadsheet-lucee/raw/master/cfpoi.zip');
-		
-		return apps;			
+
+		return apps;
 	}
 }
 

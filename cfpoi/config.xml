@@ -1,8 +1,8 @@
-<?xml version="1.0" encoding="iso-8859-1"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <!-- 
 	Path placeholders:
-		{lucee-web}: path to the lucee web directory typical "{web-root}/WEB-INF/lucee"
-		{lucee-server}: path to the lucee server directory typical where the lucee.jar is located
+		{lucee-web}: path to the Lucee web directory typically "{web-root}/WEB-INF/lucee"
+		{lucee-server}: path to the Lucee server directory typically where the lucee.jar is located
 		{temp-directory}: path to the temp directory of the current user of the system
 		{home-directory}: path to the home directory of the current user of the system
 		{web-root-directory}: path to the web root
@@ -11,4 +11,3 @@
 -->
 <config>
 </config>
-

@@ -27,8 +27,8 @@
 		<cfargument name="hasEndTag" type="boolean" required="yes">
 		<cfargument name="parent" type="component" required="no" hint="the parent cfc custom tag, if there is one">
 		<cfset variables.hasEndTag = arguments.hasEndTag />
-		<cfset variables.parent = arguments.parent />	
-		<cfset variables.ooxmlExtensions = "xlsx" />	
+		<cfset variables.parent = arguments.parent />
+		<cfset variables.ooxmlExtensions = "xlsx" />
 	</cffunction>
 
 	<cffunction name="onStartTag" output="yes" returntype="boolean">
@@ -56,7 +56,7 @@
 		<!--- name or query are required for all operations --->
 		<cfif not attributeExists('name') and not attributeExists('query')>
 			<cfthrow type="application" message="A 'name' or 'query' Attribute Is Required"  detail="Either 'name' or 'query' must be provided" />
-		</cfif>		
+		</cfif>
 
 		<!--- sheet only applies to action 'read' --->
 		<cfif getAttribute("action") neq "read" and attributeExists("sheet")>
@@ -96,27 +96,27 @@
 			</cfif>
 
 			<cfif attributeExists("name")>
-                <cfset var loc = {}>
-                <cftry>
-                  <cfset loc.name = getVariable("caller.#attributes.name#")>
-                <cfcatch type="any"/>
-                </cftry>        
-                <cfif not (structKeyExists(loc, 'name'))>
-				  <!--- not a valid csv variable --->
-				  <cfthrow type="application" message="Invalid 'Name' Attribute"  detail="The specified variable [#attributes.name#] was not found" />
-                </cfif>
+				<cfset var loc = {}>
+				<cftry>
+					<cfset loc.name = getVariable("caller.#attributes.name#")>
+				<cfcatch type="any"/>
+				</cftry>
+				<cfif not (structKeyExists(loc, 'name'))>
+				<!--- not a valid csv variable --->
+				<cfthrow type="application" message="Invalid 'Name' Attribute"  detail="The specified variable [#attributes.name#] was not found" />
+				</cfif>
 <!---			</cfif>
 			
 			<cfif attributeExists("name") and not ( IsSpreadSheetObject(caller[attributes.name]) or IsSimpleValue(caller[attributes.name]) )> --->
-                <cfif not(IsSpreadSheetObject(loc.name) or IsSimpleValue(loc.name))>
-				  <cfthrow type="application" message="Invalid 'Name' Attribute"  detail="'Name' attribute [#attributes.name#] must contain a CSV string or a Spreadsheet object" />
-                </cfif>
+				<cfif not(IsSpreadSheetObject(loc.name) or IsSimpleValue(loc.name))>
+					<cfthrow type="application" message="Invalid 'Name' Attribute"  detail="'Name' attribute [#attributes.name#] must contain a CSV string or a Spreadsheet object" />
+				</cfif>
 			
-			    <cfif IsSimpleValue(loc.name) and not attributeExists("format")>
-				  <cfthrow type="application" message="Missing Attribute" detail="Missing required attribute 'format'." />
-			    </cfif>
-		    </cfif>
-        </cfif>     
+				<cfif IsSimpleValue(loc.name) and not attributeExists("format")>
+					<cfthrow type="application" message="Missing Attribute" detail="Missing required attribute 'format'." />
+				</cfif>
+			</cfif>
+		</cfif>
 
 		<cfswitch expression="#getAttribute('action')#">
 
@@ -151,7 +151,7 @@
                     <cfset setVariable("caller.#attributes.query#", spreadsheet.read(argumentcollection = attributes)) />
 				<!--- Read into Spreadsheet object --->
 				<cfelse>
-					<cfset setVariable("caller.#attributes.name#", SpreadSheetRead( attributes.src )) />				
+					<cfset setVariable("caller.#attributes.name#", SpreadSheetRead( attributes.src )) />
 				</cfif>
 			</cfcase>
 
@@ -162,11 +162,11 @@
 				<cfset attributes.filepath = attributes.filename />
 				
 				<!--- Write SpreadSheet Object ---->
-                <cfset var loc = {}>
-                <cftry>
-                  <cfset loc.name = getVariable("caller.#attributes.name#")>
-                <cfcatch type="any"/>
-                </cftry>
+				<cfset var loc = {}>
+				<cftry>
+					<cfset loc.name = getVariable("caller.#attributes.name#")>
+				<cfcatch type="any"/>
+				</cftry>
 				<cfif attributeExists("name") and IsSpreadSheetObject(loc.name)>
 						<!--- remove "name" so write function does not mistake it for a CSV string --->
 						<cfset args = structCopy( attributes ) />
@@ -181,10 +181,9 @@
 
 				<!--- Write Query content --->
 				<cfelseif attributeExists("query")>
-						<cfset attributes.query = getVariable("caller.#attributes.query#") />
-						<cfset spreadsheet = CreateObject("component", "org.cfpoi.spreadsheet.Spreadsheet").init(useXmlFormat=isXmlFormat) />
-						<cfset spreadsheet.write(argumentcollection = attributes) />
-
+					<cfset attributes.query = getVariable("caller.#attributes.query#") />
+					<cfset spreadsheet = CreateObject("component", "org.cfpoi.spreadsheet.Spreadsheet").init(useXmlFormat=isXmlFormat) />
+					<cfset spreadsheet.write(argumentcollection = attributes) />
 				</cfif>
 
 			</cfcase>
@@ -203,11 +202,11 @@
 				<cfset attributes.nameConflict 	= attributes.sheetNameConflict />
 				
 				<!--- CSV/delimited content --->
-				<cfif attributeExists("name")>	
-					<cfset attributes.name = caller[attributes.name]  />
+				<cfif attributeExists("name")>
+					<cfset attributes.name = caller[attributes.name] />
 				<!--- Query content --->
-				<cfelseif attributeExists("query")>	
-					<cfset attributes.query = getVariable("caller.#attributes.query#")  />
+				<cfelseif attributeExists("query")>
+					<cfset attributes.query = getVariable("caller.#attributes.query#") />
 				</cfif>
 
 				<!--- If the workbook does not exist yet, this is just a simple 'write' --->
@@ -216,7 +215,7 @@
 					<cfset spreadsheet.write( argumentCollection=attributes ) />
 
 				<!--- Otherwise, read in the file and update it --->
-				<cfelse>	
+				<cfelse>
 					<cfset spreadsheet = SpreadSheetRead( attributes.filepath ) />
 					<cfset spreadsheet.update(argumentcollection = attributes) />
 					
@@ -229,7 +228,7 @@
 			<cfdefaultcase>
 				<cfthrow type="application" message="Invalid or Missing Action Attribute"  detail="You must provide an action of 'read', 'update', or 'write' for this tag." />
 			</cfdefaultcase>
-		</cfswitch>		
+		</cfswitch>
 		
 		<cfreturn true>
 	</cffunction>

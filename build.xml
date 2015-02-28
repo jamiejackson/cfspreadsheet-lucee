@@ -8,7 +8,7 @@
 	<property name="tags" value="tags" />
 	<property name="functions" value="functions" />
 	<property name="poiLib" value="poi-3.7" />
-	<property name="installer" value="cfspreadsheetInstaller" />
+	<property name="installer" value="cfspreadsheet-lucee" />
 
 	<target name="clean">
 		<delete file="${project-name}.zip" />
@@ -23,15 +23,15 @@
 		<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store" />
 		
 		<echo message="Putting the project zips into a master zip file"/>
-        <zip destfile="${project-name}.zip">
-        	<fileset dir="${project-name}/" includes="*.zip,*.cfc,*.xml" excludes=".DS_Store"/>
-        </zip>	
+		<zip destfile="${project-name}.zip">
+			<fileset dir="${project-name}/" includes="*.zip,*.cfc,*.xml" excludes=".DS_Store"/>
+		</zip>	
 		
-        <zip destfile="${installer}.zip">
-        	<fileset dir="." includes="${project-name}.zip" />
-        	<fileset dir="." includes="ExtensionProvider.cfc" excludes=".DS_Store"/>
-        </zip>
-        	
+		<zip destfile="${installer}.zip">
+			<fileset dir="." includes="${project-name}.zip" />
+			<fileset dir="." includes="ExtensionProvider.cfc" excludes=".DS_Store"/>
+		</zip>
+
 		<!-- Clean up-->
 		<echo message="cleaning up"/>
 		<antcall target="cleanZips" />
@@ -42,6 +42,6 @@
 		<delete>
 			<fileset dir="${project-name}/" includes="*.zip"/>
 		</delete>
-	</target>	
+	</target>
 
 </project>
