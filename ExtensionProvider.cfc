@@ -23,7 +23,7 @@ component displayname="extension provider" output="false" {
 		QueryAddRow(apps);
 		QuerySetCell(apps,'id','C092CE1F-C769-4E92-8A7AB609204D8F71');
 		QuerySetCell(apps,'name','cfspreadsheet');
-		QuerySetCell(apps,'type','all');
+		QuerySetCell(apps,'type','web');
 		QuerySetCell(apps,'label','&lt;cfspreadsheet /&gt;');
 		QuerySetCell(apps,'description',desc);
 		QuerySetCell(apps,'author','Extension by Andrew Kretzer (forked from Andy Jarrett)<br/>CFPOI by Matt Woodward');
