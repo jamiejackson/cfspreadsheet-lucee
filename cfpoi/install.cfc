@@ -1,60 +1,53 @@
-<cfcomponent extends="InstallFolder">
+component extends="InstallFolder" {
+	
+	void function validate(Struct error, String path, Struct config, Numeric step){
+		
+	}
 
-    <cffunction name="validate" returntype="void" output="no" hint="called to validate the entered">
-    	<cfargument name="error" type="struct">
-        <cfargument name="path" type="string">
-        <cfargument name="config" type="struct">
-        <cfargument name="step" type="numeric">
-     </cffunction>
-    
-    <cffunction name="install" returntype="string" output="yes" hint="called from Lucee to install application">
-    	<cfargument name="error" type="struct">
-        <cfargument name="path" type="string">
-        <cfargument name="config" type="struct">
-		<cfset var sReturn = "">
-		<cfset var temp = "" >
+	string function install(Struct error, String path, Struct config){
+		var sReturn = "";
+		var stReturn = super.install(argumentCollection:arguments);
+		
+		if(stReturn.status){
+			sReturn = stReturn.message;
+		}
+		else{
+			savecontent variable="sReturn"{
+				uninstall(argumentCollection=arguments);
+				echo('<p style="color:red">Tags has not been installed.</p>' & stReturn.message);
+			} 
+		}
+		
+		return sReturn;
+	}
 
-		<cfset var stReturn = super.install(argumentCollection:arguments)>
+	string function uninstall(String path, Struct config){
+		var sReturn = "";
+		var stReturn = super.uninstall(argumentCollection:arguments);
+		
+		if(stReturn.status){
+			if( len(trim(stReturn.message)) ){
+				sReturn = stReturn.message;
+			}
+			else{
+				savecontent variable="sReturn"{
+					uninstall(argumentCollection=arguments);
+					echo('<p>Tag has been successfully removed!</p>');
+				}
+			}
+		}
+		else{
+			savecontent variable="sReturn"{
+				uninstall(argumentCollection=arguments);
+				echo('<p style="color:red">Some error occurred during the uninstall process:</p>' & stReturn.message);
+			} 
+		}
+		
+		return sReturn;
+	}
 
-		<cfif stReturn.status>
-			<cfset sReturn = stReturn.message />
-		<cfelse>
-			<cfsavecontent variable="sReturn">
-				<cfset uninstall(argumentCollection=arguments)>
-				<p style="color:red">Tags has not been installed.</p>
-				<cfoutput>#stReturn.message#</cfoutput>
-			</cfsavecontent>
-		</cfif>
-        <cfreturn sReturn>
-    </cffunction>
-
-   <cffunction name="uninstall" returntype="string" output="no" hint="called by Lucee to uninstall the application">
-        <cfargument name="path" type="string">
-        <cfargument name="config" type="struct">
-		<cfset var sReturn = "">
-
-		<cfset var stReturn = super.uninstall(argumentCollection:arguments)>
-
-		<cfif stReturn.status>
-			<cfif len(trim(stReturn.message))>
-				<cfset sReturn = stReturn.message>
-			<cfelse>
-				<cfsavecontent variable="sReturn">
-					<p>Tags has been successfully removed!</p>
-				</cfsavecontent>
-			</cfif>
-		<cfelse>
-			<cfsavecontent variable="sReturn">
-				<cfset uninstall(argumentCollection=arguments)>
-				<p style="color:red">Some error occurred during the uninstalling proceed:</p>
-				<cfoutput>#stReturn.message#</cfoutput>
-			</cfsavecontent>
-		</cfif>
-        <cfreturn sReturn>
-    </cffunction>
-
-    <cffunction name="update" returntype="string" output="no" hint="called from Lucee to update a existing application">
-		<cfreturn install(argumentCollection=arguments)>
-    </cffunction>
-
-</cfcomponent>
+	string function update(){
+		return install(argumentCollection=arguments);
+	}
+	
+}
