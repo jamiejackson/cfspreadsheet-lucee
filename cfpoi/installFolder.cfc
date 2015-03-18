@@ -6,7 +6,7 @@
 		<cfargument name="config" type="struct">
 		
 		<cfset var result = {status = true, message = ""} />
-		<cfset var serverPath = expandPath('{lucee-web-directory}') />
+		<cfset var serverPath = expandPath('{lucee-server-directory}') />
 		
 		<cftry>
 			
@@ -74,7 +74,7 @@
 				status = true,
 				message = ""};
 			var ssDir = "";
-			var serverPath = expandPath('{lucee-web-directory}');
+			var serverPath = expandPath('{lucee-server-directory}');
 			
 			processResult.status = deleteAsset("directory", "#serverPath#/components/org/cfpoi");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-3.11-20141221.jar");

@@ -16,11 +16,11 @@
 				//create the loader
 				local.paths = arrayNew(1);
 				// This points to the jar we want to load. Could also load a directory of .class files
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-3.11-20141221.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-3.11-20141221.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-schemas-3.11-20141221.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/ooxml-lib/xmlbeans-2.6.0.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-export-utility.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-server-directory}'&'/lib/poi-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-server-directory}'&'/lib/poi-ooxml-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-server-directory}'&'/lib/poi-ooxml-schemas-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-server-directory}'&'/lib/ooxml-lib/xmlbeans-2.6.0.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-server-directory}'&'/lib/poi-export-utility.jar'));
 
 				if( NOT structKeyExists( server, "_poiLoader")){
 					server._poiLoader = createObject("component", "javaloader.JavaLoader").init(loadPaths = local.paths, loadColdFusionClassPath=true, trustedSource=true);
