@@ -16,15 +16,10 @@
 				//create the loader
 				local.paths = arrayNew(1);
 				// This points to the jar we want to load. Could also load a directory of .class files
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-3.7-20101029.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-3.7-20101029.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-schemas-3.7-20101029.jar'));
-/*				if ( !this.isLinux() ) {
-					arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/ooxml-lib/dom4j-1.6.1.jar'));
-				}
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/geronimo-stax-api_1.0_spec-1.0.jar'));
-				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/xmlbeans-2.3.0.jar'));
-*/
+				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-ooxml-schemas-3.11-20141221.jar'));
+				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/ooxml-lib/xmlbeans-2.6.0.jar'));
 				arrayAppend(Local.paths, expandPath('{lucee-web-directory}'&'/lib/poi-export-utility.jar'));
 
 				if( NOT structKeyExists( server, "_poiLoader")){

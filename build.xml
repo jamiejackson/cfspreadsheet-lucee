@@ -7,7 +7,7 @@
 	<property name="cfpoiComponent" value="org" />
 	<property name="tags" value="tags" />
 	<property name="functions" value="functions" />
-	<property name="poiLib" value="poi-3.7" />
+	<property name="poiLib" value="poi-3.11" />
 	<property name="installer" value="cfspreadsheet-lucee" />
 
 	<target name="clean">
@@ -20,7 +20,8 @@
 		<zip destfile="${project-name}/cfpoi.zip" basedir="${project-name}/${cfpoiComponent}" excludes=".DS_Store" />
 		<zip destfile="${project-name}/tags.zip" basedir="${project-name}/${tags}" excludes=".DS_Store" />
 		<zip destfile="${project-name}/functions.zip" basedir="${project-name}/${functions}" excludes=".DS_Store" />
-		<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store,**/ooxml-lib/***" />
+		<!--<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store,**/ooxml-lib/***" />-->
+		<zip destfile="${project-name}/poiLib.zip" basedir="${project-name}/${poiLib}" excludes=".DS_Store,poi-examples-3.11-20141221.jar,poi-excelant-3.11-20141221.jar,poi-scratchpad-3.11-20141221.jar" />
 		
 		<echo message="Putting the project zips into a master zip file"/>
 		<zip destfile="${project-name}.zip">

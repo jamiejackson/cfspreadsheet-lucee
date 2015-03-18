@@ -30,8 +30,8 @@ component displayname="extension provider" output="false" {
 		QuerySetCell(apps,'image','#instance.thisAddress#Apps-Spreadsheet-App-icon.png');
 		QuerySetCell(apps,'support','https://github.com/Leftbower/cfspreadsheet-lucee/issues');
 		QuerySetCell(apps,'documentation','https://github.com/Leftbower/cfspreadsheet-lucee/wiki');
-		QuerySetCell(apps,'created',CreateDate(2015,2,27));
-		QuerySetCell(apps,'version',"3.51");
+		QuerySetCell(apps,'created',CreateDate(2015,3,17));
+		QuerySetCell(apps,'version',"4.00");
 		QuerySetCell(apps,'category',"Application");
 		QuerySetCell(apps,'download','#instance.thisAddress#/cfpoi.zip');
 		//QuerySetCell(apps,'download','https://github.com/Leftbower/cfspreadsheet-lucee/raw/master/cfpoi.zip');

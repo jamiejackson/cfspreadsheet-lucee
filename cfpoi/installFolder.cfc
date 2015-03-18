@@ -44,7 +44,7 @@
 				file = "#path#poiLib.zip"
 				overwrite = "yes"
 				recurse = "yes"
-				storePath = "false"/>
+				storePath = "yes"/>
 				
 				<cfsavecontent variable="temp">
 					<cfoutput>
@@ -77,16 +77,18 @@
 			var serverPath = expandPath('{lucee-web-directory}');
 			
 			processResult.status = deleteAsset("directory", "#serverPath#/components/org/cfpoi");
-			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-3.7-20101029.jar");
-			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-3.7-20101029.jar");
+			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-3.11-20141221.jar");
+			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-3.11-20141221.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-export-utility.jar");
-			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-schemas-3.7-20101029.jar");
+			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-ooxml-schemas-3.11-20141221.jar");
 /*
 			Files appear to be already loaded by Lucee, this will likely change
 			processResult.status = deleteAsset("file", "#serverPath#/lib/dom4j-1.6.1.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/geronimo-stax-api_1.0_spec-1.0.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/xmlbeans-2.3.0.jar");
 */
+			// add xmlbeans-2.6.0.jar as per recommendation of Apache project, though 2.3+ is all that is required
+			processResult.status = deleteAsset("file", "#serverPath#/lib/ooxml-lib/xmlbeans-2.6.0.jar");
 			processResult.status = deleteAsset("file", "#serverPath#/library/tag/spreadsheet.cfc");
 		</cfscript>
 		
