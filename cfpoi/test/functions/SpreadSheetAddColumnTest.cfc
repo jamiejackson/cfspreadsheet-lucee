@@ -1,4 +1,4 @@
-<cfcomponent extends="mxunit.framework.TestCase">
+<cfcomponent extends="testbox.system.compat.framework.TestCase">
 
 	<cffunction name="testDefaultRowColumn" access="public" returnType="void">
 		<cfset var Local = {}>

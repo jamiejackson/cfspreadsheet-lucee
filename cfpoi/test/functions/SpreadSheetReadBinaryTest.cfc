@@ -1,4 +1,4 @@
-<cfcomponent  extends="mxunit.framework.TestCase">
+<cfcomponent  extends="testbox.system.compat.framework.TestCase">
 
 	<cffunction name="testBinaryFormat" access="public" returnType="void">
 		

@@ -1,4 +1,4 @@
-<cfcomponent  extends="mxunit.framework.TestCase">
+<cfcomponent  extends="testbox.system.compat.framework.TestCase">
 
 	<!--- Begin specific tests --->
 	<cffunction name="testNoArgumentsShouldFail" access="public" returnType="void">

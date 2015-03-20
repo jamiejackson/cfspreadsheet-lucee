@@ -1,4 +1,4 @@
-<cfcomponent extends="mxunit.framework.TestCase">
+<cfcomponent extends="testbox.system.compat.framework.TestCase">
 	
 	<cffunction name="testInfoOnNewSheet" access="public" returnType="void">
 		<!--- Simple test of Issue #5 Calling SpreadSheetInfo on "New" sheet causes error --->
