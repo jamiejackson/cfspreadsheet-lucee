@@ -9,6 +9,9 @@
 		<cfset var serverPath = expandPath('{lucee-server-directory}') />
 		
 		<cftry>
+			<cfif !DirectoryExists(serverPath & "/components")>
+				<cfdirectory action="create" directory="#serverPath#/components">
+			</cfif>
 			
 			<!--- Export the CFPOI component --->
 			<cfzip
