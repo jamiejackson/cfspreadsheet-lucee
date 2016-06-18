@@ -1,7 +1,7 @@
 component displayname="extension provider" output="false" {
 
 	instance = {
-		thisAddress = "http://#cgi.SERVER_NAME#:#cgi.SERVER_PORT#/luceeExtensionProvider/"
+		thisAddress = "http://#cgi.SERVER_NAME#:#cgi.SERVER_PORT#/"
 	};
 
 
@@ -9,8 +9,8 @@ component displayname="extension provider" output="false" {
 		var info = {
 			title="Leftbower",
 			description="A spreadsheet extension for Lucee",
-			image="#instance.thisAddress#leftbower.png",
-			url="https://github.com/Leftbower/cfspreadsheet-lucee",
+			image="#instance.thisAddress#img/leftbower.png",
+			url="https://github.com/Leftbower/cfspreadsheet-lucee/tree/cfspreadsheet-lucee-server",
 			mode="develop"
 		};
 		return info;
@@ -27,14 +27,14 @@ component displayname="extension provider" output="false" {
 		QuerySetCell(apps,'label','&lt;cfspreadsheet /&gt;');
 		QuerySetCell(apps,'description',desc);
 		QuerySetCell(apps,'author','Extension by Andrew Kretzer (forked from Andy Jarrett)<br/>CFPOI by Matt Woodward');
-		QuerySetCell(apps,'image','#instance.thisAddress#Apps-Spreadsheet-App-icon.png');
+		QuerySetCell(apps,'image','#instance.thisAddress#img/Apps-Spreadsheet-App-icon.png');
 		QuerySetCell(apps,'support','https://github.com/Leftbower/cfspreadsheet-lucee/issues');
 		QuerySetCell(apps,'documentation','https://github.com/Leftbower/cfspreadsheet-lucee/wiki');
-		QuerySetCell(apps,'created',CreateDate(2015,3,17));
+		QuerySetCell(apps,'created',CreateDate(2016,6,17));
 		QuerySetCell(apps,'version',"4.00");
 		QuerySetCell(apps,'category',"Application");
 		QuerySetCell(apps,'download','#instance.thisAddress#/cfpoi.zip');
-		//QuerySetCell(apps,'download','https://github.com/Leftbower/cfspreadsheet-lucee/raw/master/cfpoi.zip');
+		//QuerySetCell(apps,'download','https://github.com/Leftbower/cfspreadsheet-lucee/tree/cfspreadsheet-lucee-server/raw/master/cfpoi.zip');
 
 		return apps;
 	}
