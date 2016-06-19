@@ -14,7 +14,7 @@ component extends="InstallFolder" {
 		else{
 			savecontent variable="sReturn"{
 				uninstall(argumentCollection=arguments);
-				echo('<p style="color:red">Tags has not been installed.</p>' & stReturn.message);
+				echo('<p style="color:red">Tag has not been installed.</p>' & stReturn.message);
 			} 
 		}
 		
