@@ -6,7 +6,7 @@
 		<cfargument name="config" type="struct">
 		
 		<cfset var result = {status = true, message = ""} />
-		<cfset var serverPath = expandPath('{lucee-server-directory}') />
+		<cfset var serverPath = getContextPath() />
 		
 		<cftry>
 			<cfif !DirectoryExists(serverPath & "/components")>
@@ -77,7 +77,7 @@
 				status = true,
 				message = ""};
 			var ssDir = "";
-			var serverPath = expandPath('{lucee-server-directory}');
+			var serverPath = getContextPath();
 			
 			processResult.status = deleteAsset("directory", "#serverPath#/components/org/cfpoi");
 			processResult.status = deleteAsset("file", "#serverPath#/lib/poi-3.11-20141221.jar");
@@ -130,6 +130,10 @@
 			</cfcatch>
 		</cftry>
 		<cfreturn status />
+	</cffunction>
+	
+	<cffunction name="getContextPath" access="private" returntype="string">
+		<cfreturn expandPath('{lucee-#request.adminType#-directory}')>
 	</cffunction>
 	
  </cfcomponent>

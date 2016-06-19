@@ -8,7 +8,7 @@ component displayname="extension provider" output="false" {
 	remote struct function getInfo(){
 		var info = {
 			title="Leftbower",
-			description="A spreadsheet extension for Lucee",
+			description="A spreadsheet extension for Lucee 4.x",
 			image="#instance.thisAddress#img/leftbower.png",
 			url="https://github.com/Leftbower/cfspreadsheet-lucee/tree/cfspreadsheet-lucee-server",
 			mode="develop"
@@ -30,8 +30,8 @@ component displayname="extension provider" output="false" {
 		QuerySetCell(apps,'image','#instance.thisAddress#img/Apps-Spreadsheet-App-icon.png');
 		QuerySetCell(apps,'support','https://github.com/Leftbower/cfspreadsheet-lucee/issues');
 		QuerySetCell(apps,'documentation','https://github.com/Leftbower/cfspreadsheet-lucee/wiki');
-		QuerySetCell(apps,'created',CreateDate(2016,6,17));
-		QuerySetCell(apps,'version',"4.00");
+		QuerySetCell(apps,'created',CreateDate(2016,6,18));
+		QuerySetCell(apps,'version',"4.1.0");
 		QuerySetCell(apps,'category',"Application");
 		QuerySetCell(apps,'download','#instance.thisAddress#/cfpoi.zip');
 		//QuerySetCell(apps,'download','https://github.com/Leftbower/cfspreadsheet-lucee/tree/cfspreadsheet-lucee-server/raw/master/cfpoi.zip');
